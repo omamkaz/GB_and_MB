@@ -1,0 +1,114 @@
+#!/usr/bin/env python
+
+import os, sys, traceback, getopt
+from Modulse import my_os as ms
+from Modulse import my_colors as css
+
+#################### Colors
+R = "\033[1;31m"
+# green
+G = "\033[;32m"
+# orange
+O = "\033[;33m"
+# blue
+B = "\033[;34m"
+# purple
+P = "\033[;35m"
+# cyan
+C = "\033[36m"
+# white
+W = "\033[;38m"
+# End
+E = "\033[0m"
+# yellow
+Y = "\033[1;33m"
+#################### colors
+n = "\033[0;0m"
+a = "\033[0;33m"
+b = "\033[0;34m"
+y = "\033[33m"
+####################
+def helpme():
+      print(C+"""\
+:: usage: una COMMAND [options]
+
+    una -a <list-all> -n <sysname> -s <type system> -f <hostname> -r <release> -v <version>
+
+ :#: cmmand :-->
+ 
+	    -a --all     =   List All Informations For System < uname -a >
+	    -f --host    =   List Hostname for System < uname -n >
+	    -r --release =   List Releas < unaem -r >  
+	    -n --name    =   List name the System < uname -s >   
+	    -m --machine =   List Machine for System types [ x86_64 or x86 ] < uname -m >
+            -v --version =   List Version < uname -v > 
+"""+E)
+
+cmdos = os.system
+
+def main(argv):
+# # list for Options and Command :
+    try:
+        
+        names = ""
+        types = ""
+        versions = ""
+        hostnames = ""
+        hostnames = ""
+        releases = ""
+        
+        try:
+            opts, args = getopt.getopt(argv,"ahfrvnm",["all","help","hostname","release","version","name","machine",])
+        except getopt.GetoptError:
+            helpme()
+            #print ('una -n <sysname> -s <type system> -f <hostname> -r <release> -v <version>')
+            sys.exit(2)
+# # Action the argv for applicatio stop:
+        for opt, arg in opts:
+# # this is Help:
+            if opt in ('-h', '--help'):
+                helpme()
+                sys.exit()
+# # this is all
+            elif opt in ("-a", "--all"):
+                print("")
+                ms.una.All()
+                print("")
+ #  #               
+            elif opt in ("-n", "--name"):
+                print("")
+                ms.una.syn()
+                print("")
+#  # 
+            elif opt in ("-r", "--release"):
+                print("")
+                ms.una.rel()
+                print("")
+#  #
+            elif opt in ("-m", "--machine"):
+                print("")
+                ms.una.ma()
+                print("")
+#  #
+            elif opt in ("-f", "--host"):
+                print("")
+                ms.una.ho()
+                print("")
+#  #
+            elif opt in ("-v", "--version"):
+                print("")
+                ms.una.ve()
+                print("")
+            else:
+                helpme()
+######################################
+# ================================================================
+    except KeyboardInterrupt:
+        print("")
+        print(R+" \n    Closing, bye! ...\n"+E)
+    except Exception:
+        traceback.print_exc(file=sys.stdout)
+        sys.exit()
+# ================================================================
+if __name__ == '__main__':
+    main(sys.argv[1:])
