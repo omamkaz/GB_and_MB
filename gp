@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import os, sys, traceback, getopt
+import os, sys
 import pstr
 import click
 
