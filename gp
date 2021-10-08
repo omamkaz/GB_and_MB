@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 
-import os, sys
+import os
+import sys
 import pstr
 import click
+import humanize as hz
 
 pss = pstr.pcolor().Pss
 
 mgkb  =  [1024, 1048576, 134217728, 1073741824]
 tmgkb =  ['MB', 'KB', 'Bytes', 'Bits']
 
-import humanize as hz 
+
 #### this code for print(GB = MB from 1GB to 50GB)
 # Gp = 1024
 # Y = 1
@@ -55,6 +57,6 @@ def GPS(fr, to, num):
     except ValueError:
         print(pss("<!r> \n [x] Pleas Enter number not string ...<!e>"), file=sys.stderr)
         sys.exit(1)
-        
+
 if __name__ == '__main__' :
     GPS()
